@@ -1,33 +1,38 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [content, setContent] = useState([])
+  async function fetchData(){
+    try{
+      const response = await fetch('https://openlibrary.org/search.json?q=jason+bond')
+      const data = await response.json()
+      setContent(data.results)
+      console.log(content)
+    }
+      catch{
+        console.error('damn cuh')
+      }
+      console.log(content)
+    }
+
+
+  fetchData()
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <nav>
+      <label htmlFor='searchField'>Book search</label>
+      <input id='searchField' type='search' placeholder='search...'></input>
+    </nav>
+    <main>
+      {content?.map((i, key) =>{
+        <article key={key}>
+          <h2>{i.title}</h2>
+        </article>
+      })}
+    </main>
     </>
   )
 }
