@@ -1,37 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import Content from './components/Content'
 
 function App() {
   
   const [content, setContent] = useState([])
-  async function fetchData(){
-    try{
-      const response = await fetch('https://openlibrary.org/search.json?q=jason+bond')
-      const data = await response.json()
-      setContent(data.results)
-      console.log(content)
-    }
-      catch{
-        console.error('damn cuh')
-      }
-      console.log(content)
+
+  const getData =async()=>{
+    const response = await fetch('https://openlibrary.org/search.json?q=title:%22James+Bond%22&fields=title,author_name&limit=20&page=1')
+    const data = await response.json()
+    setContent(data.docs)
     }
 
+  useEffect(()=>{
+    getData()
+  },[])
 
-  fetchData()
+  console.log(content)
 
   return (
     <>
     <nav>
-      <label htmlFor='searchField'>Book search</label>
-      <input id='searchField' type='search' placeholder='search...'></input>
+      <input type='search' placeholder='search...'></input>
+      <button type='button'>Search</button>
     </nav>
     <main>
-      {content?.map((i, key) =>{
-        <article key={key}>
-          <h2>{i.title}</h2>
+    <h2>Jason Bond bøker</h2>
+    {content?.map(element => 
+        <article key={element.key}>
+          <h3>"{element.title}"</h3>
+          <img/>
+          <p>{element.subtitle}</p>
+          {console.log(element.title)}
         </article>
-      })}
+        )}
     </main>
     </>
   )
