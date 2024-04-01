@@ -44,7 +44,7 @@ function App() {
       <button type='button'>Search</button>
     </nav>
     <main>
-    <h2>Jason Bond bøker</h2>
+    <h2>James Bond bøker</h2>
     <Content content={content}/>
 
         <button name='prev'></button>
