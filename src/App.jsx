@@ -6,6 +6,17 @@ function App() {
   
   const [content, setContent] = useState([])
 
+  const [page, setPage] = useState(1)
+
+  const handlePageChange = function(p)  {
+    if(page <= 1 && p === -1){
+      
+    }else{
+      setPage(page + p)
+      console.log(page)
+    }
+  }
+  
   /*
   --------Gammel kode
   const getData =async()=>{
@@ -20,9 +31,7 @@ function App() {
     // Forutenom denne 'quick'fixen er alt annet gjort av meg. Parameterene i apiet er det jeg selv som har måtte finne ut av.
     const getData = async () => {
       try {
-        const response = await fetch(
-          'https://openlibrary.org/search.json?q=title:"James Bond"&fields=title,author_name,isbn&limit=21&page=1'
-        )
+        const response = await fetch(`https://openlibrary.org/search.json?q=title:"James Bond"&fields=title,author_name,isbn&limit=21&page=${page}`)
         const data = await response.json()
         setContent(data.docs)
       } catch (error) {
@@ -32,7 +41,8 @@ function App() {
 
   useEffect(()=>{
     getData()
-  },[])
+    console.log("data has been gotten")
+  },[page])
 
   return (
     <>
@@ -47,8 +57,8 @@ function App() {
     <h2>James Bond bøker</h2>
     <Content content={content}/>
 
-        <button name='prev'></button>
-        <button name='next'></button>
+        <button id="prevButton" name='prev' onClick={() => handlePageChange(-1)} disabled={page === 1}>prev</button>
+        <button name='next' onClick={() => handlePageChange(+1)}>next</button>
         
     </main>
     </>
