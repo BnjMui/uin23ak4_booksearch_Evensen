@@ -3,13 +3,16 @@ export default function Content({content}){
     console.log("Content er ", content)
 return(
     <>
-    <h2>Dette er bøker?</h2>
-    {content?.map(element => 
-        <article key={element.key}>
-          <h2>"{element.title}"</h2>
-          {console.log(element.title)}
-        </article>
-        )}
+    {content?.map((element, index) => (
+          <article key={index}>
+              <img src={`https://covers.openlibrary.org/b/isbn/${element.isbn[0]}-M.jpg`}
+              alt={element.title} 
+              />
+            <h3>"{element.title}"</h3>
+            <p>ISBN:{element.isbn[0]}</p>
+            <p>{element.subtitle}</p>
+          </article>
+        ))}
     </>
 )
 }
