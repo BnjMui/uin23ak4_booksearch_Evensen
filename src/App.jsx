@@ -9,12 +9,8 @@ function App() {
   const [page, setPage] = useState(1)
 
   const handlePageChange = function(p)  {
-    if(page <= 1 && p === -1){
-      
-    }else{
       setPage(page + p)
-      console.log(page)
-    }
+      window.scrollTo(0,0)
   }
   
   /*
@@ -42,6 +38,7 @@ function App() {
   useEffect(()=>{
     getData()
     console.log("data has been gotten")
+    console.log(page)
   },[page])
 
   return (
@@ -55,6 +52,8 @@ function App() {
     </nav>
     <main>
     <h2>James Bond bøker</h2>
+    <button id="prevButton" name='prev' onClick={() => handlePageChange(-1)} disabled={page === 1}>prev</button>
+    <button name='next' onClick={() => handlePageChange(+1)}>next</button>
     <Content content={content}/>
 
         <button id="prevButton" name='prev' onClick={() => handlePageChange(-1)} disabled={page === 1}>prev</button>
