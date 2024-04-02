@@ -1,6 +1,5 @@
-export default function Content({content}){
+export default function BookCard({content}){
 
-    console.log("Content er ", content)
 return(
     <>
     {content?.map((element, index) => (
