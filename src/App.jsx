@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './styles/main.scss'
 import BookCard from './components/BookCard'
 import Buttons from './components/Buttons'
+import Title from './components/Title'
 
 function App() {
   
@@ -27,29 +28,16 @@ function App() {
     getData()
   },[page])
   
+  //Funksjon for å bytte til neste side.
   const handlePageChange = function(p)  {
       setPage(page + p)
       window.scrollTo(0,0)
   }
-  /*
-  --------Gammel kode
-  const getData =async()=>{
-    const response = await fetch('https://openlibrary.org/search.json?q=title:James+Bond&fields=title,author_name,isbn&limit=20&page=1')
-    const data = await response.json()
-    setContent(data.docs)
-    .catch(console.log(error))
-    }
-
-     Her fikk jeg litt hjelp av chatGPT ettersom jeg fikk en error med setContent i konsollen. Dette påvirket ikke resultatet i koden.
-     Problemet var måten jeg forsøkte å skrive .catch på etter setContent i funksjonen min.
-     Forutenom denne 'quick'fixen er alt annet gjort av meg. Parameterene i apiet er det jeg selv som har måtte finne ut av.
-    */
+ 
 
   return (
     <>
-    <header>
-      <h1>Boksøk</h1>
-    </header>
+    <Title />
     <nav>
       <input type='search' placeholder='search...'></input>
       <button type='button'>Search</button>
