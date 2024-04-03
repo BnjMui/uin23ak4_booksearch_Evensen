@@ -5,7 +5,7 @@ export default function BookCard({content, loading}){
 return(
     <>
     {loading ? (
-      <p>Loading...</p>
+      <p id="loading">Loading...</p>
     ):
     content?.map((element, index) => (
           <article key={index}>

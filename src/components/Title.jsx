@@ -1,7 +1,7 @@
-export default function Title({setApiValue}){
+export default function Title({setApiValue, setPage}){
     return (
         <header>
-            <h1 onClick={()=> setApiValue("James Bond")}>Boksøk</h1>
+            <h1 onClick={()=> { setApiValue("James Bond"); setPage(1)}}>Boksøk</h1>
         </header>
     )
 }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import './styles/main.scss'
 import BookCard from './components/BookCard'
 import Buttons from './components/Buttons'
 import Title from './components/Title'
 import Search from './components/Search'
+import Footer from './components/Footer'
 
 function App() {
   
@@ -28,6 +28,7 @@ function App() {
     }
   }
   useEffect(()=>{
+    document.getElementById("search").value=""
     setLoading(true)
     getData()
   },[apiValue, page])
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <>
-    <Title setApiValue={setApiValue}/>
+    <Title setApiValue={setApiValue} setPage={setPage}/>
     <nav>
       <Search setApiValue={setApiValue} setPage={setPage} />
     </nav>
@@ -51,6 +52,7 @@ function App() {
       <Buttons handlePageChange={handlePageChange} page={page} content={content} totalPages={totalPages} />
         
     </main>
+    <Footer/>
     </>
   )
 }
