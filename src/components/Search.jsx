@@ -19,7 +19,7 @@ export default function Search({setApiValue, setPage}){
     return(
         <>
         <form onSubmit={handleSearch}>
-        <h2>Leter du etter en book, søk her!</h2>
+        <p>Leter du etter en book, søk her!</p>
         <input type='search' id="search" name="search" placeholder='search...' onChange={handleChange}></input>
         <button type='button' onClick={handleSearch}>Search</button>
         </form>
