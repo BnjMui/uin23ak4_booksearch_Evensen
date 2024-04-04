@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Search({setApiValue, setPage}){
+export default function SearchResults({setApiValue, setPage}){
     const [searchInput, setSearchInput] = useState("")
 
     const handleChange = function (element) {

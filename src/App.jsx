@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import BookCard from './components/BookCard'
 import Buttons from './components/Buttons'
 import Title from './components/Title'
-import Search from './components/Search'
 import Footer from './components/Footer'
 import MainTitle from './components/MainTitle'
+import SearchResults from './components/SearchResults'
 
 function App() {
   
@@ -44,7 +44,7 @@ function App() {
     <>
     <Title setApiValue={setApiValue} setPage={setPage}/>
     <nav>
-      <Search setApiValue={setApiValue} setPage={setPage} />
+      <SearchResults setApiValue={setApiValue} setPage={setPage} />
     </nav>
     <main>
       <MainTitle apiValue={apiValue}/>
