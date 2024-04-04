@@ -1,8 +1,10 @@
-
+$background-color: #FEFEFE;
+$primary-button-color: #727272;
+$primary-button-text: #FFFF;
 body {
     margin: 0;
-    background-color: #F0F0F0;
     background-image: url('/images/books-1655783_1920.jpg');
+    background-attachment: fixed;
     padding: 5rem;
 }
 #root {
@@ -11,11 +13,15 @@ body {
         padding: 2rem;
         text-align: center;
         font-family: Sans-serif, Arial, Helvetica;
-        background-color: #BCAAA4;
+        background-color: $background-color;
         border-radius: 12px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
         header {
         h1 {
             margin: 2rem auto 4rem auto;
+            border: 1px solid;
+            border-radius: 7px;
+            width: 50%;
             &:hover {
                 cursor: pointer;
             }
@@ -25,27 +31,37 @@ body {
 nav {
     display: flex;
     justify-content: center;
-    p {
-        flex: 1;
-        margin: 0;
-    }
-    input {
-        margin: 0.3rem;
-        border: 1px solid;
-        border-radius: 6px;
-        padding: 0.2rem;
-    }
-    button {
-        border: 1px solid black;
-        padding: 0.2rem;
-        border-radius: 6px;
-        background-color: #9E9E9E;
-        color: black;
-        &:hover {
-            cursor: pointer;
-            color: white;
-            background-color: #616161;
+    form {
+        width: 100%;
+        p {
+            flex: 1;
+            margin: 0;
         }
+        input {
+            width: 20rem;
+            margin: 0.3rem;
+            border: 1px solid;
+            border-radius: 6px;
+            padding: 0.2rem;
+        }
+        button {
+            width: 7rem;
+            border: 1px solid black;
+            padding: 0.2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: small;
+            background-color: $primary-button-color;
+            color: $primary-button-text;
+            &:hover {
+                cursor: pointer;
+                background-color: darken($primary-button-text, 10%);
+            }
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+    }
     }
 }
 main {
@@ -87,12 +103,15 @@ main {
                 border: 1px solid black;
                 padding: 0.2rem;
                 border-radius: 6px;
-                background-color: #9E9E9E;
-                color: black;
+                background-color: $primary-button-color;
+                color: $primary-button-text;
                 &:hover {
                     cursor: pointer;
-                    color: white;
-                    background-color: #616161;
+                    background-color: darken($primary-button-text, 10%);
+                }
+                &:disabled {
+                    cursor: not-allowed;
+                    opacity: 0.5;
                 }
             }
             #pageTotal {

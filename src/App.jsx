@@ -4,6 +4,7 @@ import Buttons from './components/Buttons'
 import Title from './components/Title'
 import Search from './components/Search'
 import Footer from './components/Footer'
+import MainTitle from './components/MainTitle'
 
 function App() {
   
@@ -15,7 +16,7 @@ function App() {
   
   const getData = async () => {
     try {
-      const response = await fetch(`https://openlibrary.org/search.json?q=title:"${apiValue}"&fields=title,author_name,isbn,first_publish_year,ratings_average&limit=21&page=${page}`)
+      const response = await fetch(`https://openlibrary.org/search.json?q=title:"${apiValue}"&fields=title,author_name,isbn,first_publish_year,ratings_average&limit=12&page=${page}`)
       const data = await response.json()
       setContent(data.docs)
       setLoading(false)
@@ -46,11 +47,10 @@ function App() {
       <Search setApiValue={setApiValue} setPage={setPage} />
     </nav>
     <main>
-      <h2>{apiValue}</h2>
+      <MainTitle apiValue={apiValue}/>
       <Buttons handlePageChange={handlePageChange} page={page} content={content} totalPages={totalPages} />
       <BookCard content={content} loading={loading}/>
       <Buttons handlePageChange={handlePageChange} page={page} content={content} totalPages={totalPages} />
-        
     </main>
     <Footer/>
     </>
