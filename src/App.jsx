@@ -42,17 +42,9 @@ function App() {
 
   return (
     <>
-    <Title setApiValue={setApiValue} setPage={setPage}/>
-    <nav>
-      <SearchResults setApiValue={setApiValue} setPage={setPage} />
-    </nav>
-    <main>
-      <MainTitle apiValue={apiValue}/>
-      <Buttons handlePageChange={handlePageChange} page={page} content={content} totalPages={totalPages} />
-      <BookCard content={content} loading={loading}/>
-      <Buttons handlePageChange={handlePageChange} page={page} content={content} totalPages={totalPages} />
-    </main>
-    <Footer/>
+      <Title setApiValue={setApiValue} setPage={setPage}/>
+      <SearchResults setApiValue={setApiValue} setPage={setPage} content={content} loading={loading} apiValue={apiValue} handlePageChange={handlePageChange} page={page} totalPages={totalPages}/>
+      <Footer/>
     </>
   )
 }
